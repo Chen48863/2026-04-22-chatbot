@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}智慧聊天機器人{% endblock %}
+{% block content %}
+<div class="app-container">
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo"><span class="logo-icon">🤖</span><span class="logo-text">Smart Chatbot</span></div>
+            <button class="btn-new-chat" id="btnNewChat" title="新增對話">＋</button>
+        </div>
+        <div class="session-list" id="sessionList"></div>
+        <div class="sidebar-footer">
+            <button class="btn-settings" id="btnSettings" title="設定">⚙️ 設定</button>
+        </div>
+    </aside>
+    <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+    <main class="chat-main">
+        <div class="chat-header" id="chatHeader">
+            <div class="chat-title" id="chatTitle">
+                <h2>歡迎使用智慧聊天機器人</h2>
+                <span class="chat-subtitle">選擇或建立一個對話開始聊天</span>
+            </div>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-icon">🤖</div>
+                <h1>智慧聊天機器人</h1>
+                <p>點擊左上角「＋」建立新對話，開始聊天吧！</p>
+                <div class="welcome-features">
+                    <div class="feature-card"><span class="feature-icon">💬</span><span>多輪對話</span></div>
+                    <div class="feature-card"><span class="feature-icon">📎</span><span>檔案上傳</span></div>
+                    <div class="feature-card"><span class="feature-icon">🔄</span><span>重新生成</span></div>
+                    <div class="feature-card"><span class="feature-icon">🧠</span><span>記憶機制</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-area" id="chatInputArea" style="display: none;">
+            <div class="input-container">
+                <button class="btn-attach" id="btnAttach" title="上傳檔案">📎</button>
+                <input type="file" id="fileInput" style="display:none" accept=".jpg,.jpeg,.png,.gif,.pdf,.txt,.docx">
+                <textarea class="message-input" id="messageInput" placeholder="輸入訊息..." rows="1"></textarea>
+                <button class="btn-send" id="btnSend" title="發送" disabled>➤</button>
+                <button class="btn-stop" id="btnStop" title="中止生成" style="display:none">⬛</button>
+            </div>
+            <div class="input-hint"><span>按 Enter 發送，Shift+Enter 換行</span></div>
+        </div>
+    </main>
+</div>
+<div class="modal-overlay" id="settingsModal" style="display:none">
+    <div class="modal">
+        <div class="modal-header"><h3>⚙️ 設定</h3><button class="btn-close" id="btnCloseSettings">&times;</button></div>
+        <div class="modal-body">
+            <div class="form-group"><label for="settingName">顯示名稱</label><input type="text" id="settingName" placeholder="請輸入您的名稱" maxlength="50"></div>
+            <div class="form-group"><label for="settingLanguage">偏好語言</label><select id="settingLanguage"><option value="繁體中文">繁體中文</option><option value="英文">English</option><option value="日文">日本語</option></select></div>
+            <div class="form-group"><label for="settingStyle">回覆風格</label><select id="settingStyle"><option value="友善">友善</option><option value="正式">正式</option><option value="簡潔">簡潔</option><option value="詳細">詳細</option></select></div>
+        </div>
+        <div class="modal-footer"><button class="btn-secondary" id="btnCancelSettings">取消</button><button class="btn-primary" id="btnSaveSettings">儲存設定</button></div>
+    </div>
+</div>
+<div class="modal-overlay" id="renameModal" style="display:none">
+    <div class="modal modal-sm">
+        <div class="modal-header"><h3>✏️ 重新命名</h3><button class="btn-close" id="btnCloseRename">&times;</button></div>
+        <div class="modal-body"><div class="form-group"><label for="renameInput">聊天室名稱</label><input type="text" id="renameInput" placeholder="新名稱" maxlength="200"></div></div>
+        <div class="modal-footer"><button class="btn-secondary" id="btnCancelRename">取消</button><button class="btn-primary" id="btnConfirmRename">確認</button></div>
+    </div>
+</div>
+{% endblock %}

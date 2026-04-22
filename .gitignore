@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# 環境變數
+.env
+.env.local
+
+# 虛擬環境
+venv/
+.venv/
+
+# 資料庫（每次執行會自動生成）
+database.db
+
+# 上傳檔案目錄
+uploads/*
+!uploads/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
